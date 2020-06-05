@@ -25,7 +25,10 @@ func main() {
 	}
 	posEngine.Route(router)
 
-	fmt.Println("Listening to port 8080...")
+	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", http.FileServer(http.Dir("./public/"))))
+	http.Handle("/assets/", router)
+
+	fmt.Println("Listening to port 80")
 
 	http.ListenAndServe(":80", router)
 
