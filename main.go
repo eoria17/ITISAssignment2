@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ITISAssignment2/config"
-	"github.com/ITISAssignment2/storage"
+	"github.com/tiuriandy/ITISAssignment2/config"
+	"github.com/tiuriandy/ITISAssignment2/storage"
 
 	"github.com/gorilla/mux"
 
-	pos "github.com/ITISAssignment2/controller"
+	pos "github.com/tiuriandy/ITISAssignment2/controller"
 )
 
 func main() {
