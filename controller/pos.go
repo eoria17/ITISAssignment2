@@ -1,8 +1,8 @@
 package pos
 
 import (
-	"github.com/ITISAssignment2/storage"
 	"github.com/gorilla/mux"
+	"github.com/tiuriandy/ITISAssignment2/storage"
 )
 
 type PosEngine struct {

@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	storage_, err := storage.Open(config.DB_HOST, config.DB_NAME, config.DB_USER, config.DB_PASSWORD, config.DB_PORT)
+	storage_, err := storage.Open(config.DB_HOST, config.DB_NAME, config.DB_USER, config.DB_PASSWORD)
 	if err != nil {
 		panic(err)
 	}

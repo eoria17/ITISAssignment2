@@ -1,11 +1,11 @@
 package config
 
 const (
-	DB_ADAPTER  = ""
-	DB_HOST     = ""
-	DB_USER     = ""
-	DB_PASSWORD = ""
-	DB_NAME     = ""
-	DB_SSLMODE  = ""
+	DB_ADAPTER  = "postgres"
+	DB_HOST     = "localhost"
+	DB_USER     = "postgres"
+	DB_PASSWORD = "admin"
+	DB_NAME     = "testing"
+	DB_SSLMODE  = "disable"
 	DB_PORT     = ""
 )
