@@ -17,6 +17,37 @@ import (
 	"github.com/tiuriandy/ITISAssignment2/model"
 )
 
+func (pos PosEngine) MenuDelete(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	id, _ := strconv.Atoi(vars["id"])
+
+	record := model.Menu{}
+	pos.Storage.DB.First(&record, id)
+
+	creds := credentials.NewStaticCredentials(config.AWS_KEY, config.AWS_SECRET, config.AWS_TOKEN)
+	creds.Get()
+
+	cfg := aws.NewConfig().WithRegion("us-east-1").WithCredentials(creds)
+
+	svc := s3.New(session.New(), cfg)
+
+	x := strings.Split(record.ImageURL, "/")
+	deletePath := "/media/" + x[len(x)-1]
+	delParams := &s3.DeleteObjectInput{
+		Bucket: aws.String(config.AWS_BUCKET_NAME),
+		Key:    aws.String(deletePath),
+	}
+
+	_, err := svc.DeleteObject(delParams)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	pos.Storage.DB.Delete(&record)
+
+	http.Redirect(w, r, "http://"+r.Host+"/menu", http.StatusSeeOther)
+}
+
 func (pos PosEngine) MenuGet(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, _ := strconv.Atoi(vars["id"])
