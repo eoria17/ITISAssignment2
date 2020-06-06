@@ -1,0 +1,60 @@
+{{define "new_menus"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{.assets}}style.css">
+</head>
+
+<body>
+    <header class="header">
+        Create new Menu
+    </header>
+
+    <div class="sidebar">
+        <a href="/orders">Orders</a>
+        <a class="active" href="/menu/create">Enter new Menu</a>
+        <a href="/menu">Show all Menu</a>
+    </div>
+
+    <!-- Page content -->
+    <div class="content">
+        <form action="/menu/create" method="POST" enctype="multipart/form-data">
+            <div class="newMenuBox">
+            <table align="center" style="width: 100%; text-align: center; border-collapse: separate; border-spacing: 0 1em;">
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" name="name" style="width: 97%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Price
+                    </td>
+                    <td>
+                        <input type="text" name="price" style="width: 97%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Image
+                    </td>
+                    <td>
+                        <input type="file" id="myFile" name="image">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td align="right"><input type="submit" value="Create" style="width: 100%;"></td>
+                </tr>
+            </table>
+        </div>
+        </form>
+    </div>
+</body>
+
+</html>
+{{end}}

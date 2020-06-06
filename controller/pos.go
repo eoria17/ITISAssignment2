@@ -15,6 +15,7 @@ type PosEngine struct {
 func (pos PosEngine) Route(r *mux.Router) {
 	r.HandleFunc("/", pos.Login)
 	r.HandleFunc("/home", pos.Home)
+	r.HandleFunc("/menu/create", pos.MenuCreate)
 }
 
 func (pos PosEngine) Login(w http.ResponseWriter, r *http.Request) {
