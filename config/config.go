@@ -2,12 +2,12 @@ package config
 
 const (
 	DB_ADAPTER  = "postgres"
-	DB_HOST     = "localhost"
+	DB_HOST     = "pos.cla9wcfkakz8.us-east-1.rds.amazonaws.com"
 	DB_USER     = "postgres"
-	DB_PASSWORD = "admin"
-	DB_NAME     = "testing"
+	DB_PASSWORD = "12345678"
+	DB_NAME     = "pos"
 	DB_SSLMODE  = "disable"
-	DB_PORT     = ""
+	DB_PORT     = "5432"
 
 	AWS_KEY         = "ASIAQ3N365D4D72TY6OQ"
 	AWS_SECRET      = "c3nJEyZG9W+zWTu1fz5TFqSPARmtxYrkY58czg4z"

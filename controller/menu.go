@@ -63,7 +63,7 @@ func (pos PosEngine) MenuCreate(w http.ResponseWriter, r *http.Request) {
 			ContentType:   aws.String(fileType),
 		}
 
-		_, err := svc.PutObject(params)
+		_, err = svc.PutObject(params)
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -75,16 +75,17 @@ func (pos PosEngine) MenuCreate(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 		}
 
-		url := "https://%s.amazonaws.com/%s/%s"
-		url = fmt.Sprintf(url, "us-east-1", config.AWS_BUCKET_NAME, fileheader.Filename)
+		url := "https://%s.s3.amazonaws.com%s"
+		url = fmt.Sprintf(url, config.AWS_BUCKET_NAME, path)
 
 		menu := model.Menu{
-			Name:  r.FormValue("name"),
-			Price: float64(price),
-			URL:   url,
+			Name:     r.FormValue("name"),
+			Price:    float64(price),
+			ImageURL: url,
 		}
 
 		pos.Storage.DB.Create(&menu)
+		http.Redirect(w, r, "http://"+r.Host+"/home", http.StatusSeeOther)
 
 	}
 }
