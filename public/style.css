@@ -96,7 +96,26 @@ div.content {
 
 .newMenuBox {
   width: 20%;
-  height: 18%;
+  height: 17%;
+  padding: 10px;
+  background-color: #cccccc;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+}
+
+.listBox {
+  width: 20%;
+  height: 100%;
+  padding: 10px;
+  background-color: #cccccc;
+  position: absolute;
+  left: 40%;
+}
+
+.updateBox {
+  width: 20%;
+  height: 30%;
   padding: 10px;
   background-color: #cccccc;
   position: absolute;

@@ -16,6 +16,8 @@ func (pos PosEngine) Route(r *mux.Router) {
 	r.HandleFunc("/", pos.Login)
 	r.HandleFunc("/home", pos.Home)
 	r.HandleFunc("/menu/create", pos.MenuCreate)
+	r.HandleFunc("/menu", pos.Menu)
+	r.HandleFunc("/menu/{id:[0-9]+}", pos.MenuGet)
 }
 
 func (pos PosEngine) Login(w http.ResponseWriter, r *http.Request) {
