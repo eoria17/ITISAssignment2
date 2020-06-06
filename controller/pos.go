@@ -14,15 +14,45 @@ type PosEngine struct {
 
 func (pos PosEngine) Route(r *mux.Router) {
 	r.HandleFunc("/", pos.Login)
+	r.HandleFunc("/home", pos.Home)
 }
 
 func (pos PosEngine) Login(w http.ResponseWriter, r *http.Request) {
-	viewPage := "view/index.html"
+	if r.Method == "GET" {
+
+		viewPage := "view/login.html"
+		assetsUrl := "http://" + r.Host + "/assets/"
+
+		t, _ := template.ParseFiles(viewPage)
+
+		data := map[string]interface{}{
+			"assets": assetsUrl,
+		}
+
+		w.WriteHeader(http.StatusOK)
+		t.ExecuteTemplate(w, "login", data)
+	} else {
+		r.ParseForm()
+
+		if r.FormValue("username") == "admin" && r.FormValue("password") == "admin" {
+			http.Redirect(w, r, "http://"+r.Host+"/home", http.StatusSeeOther)
+		} else {
+			http.Redirect(w, r, "http://"+r.Host, http.StatusSeeOther)
+		}
+	}
+
+}
+
+func (pos PosEngine) Home(w http.ResponseWriter, r *http.Request) {
+	viewPage := "view/home.html"
+	assetsUrl := "http://" + r.Host + "/assets/"
 
 	t, _ := template.ParseFiles(viewPage)
 
-	data := map[string]interface{}{}
+	data := map[string]interface{}{
+		"assets": assetsUrl,
+	}
 
-	t.ExecuteTemplate(w, "login", data)
 	w.WriteHeader(http.StatusOK)
+	t.ExecuteTemplate(w, "home", data)
 }

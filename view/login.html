@@ -1,0 +1,36 @@
+{{define "login"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{.assets}}style.css">
+</head>
+
+<body>
+    <form action="/" method="POST">
+        <div class="loginBox">
+            <h1 style="text-align: center; color: black;">Login</h1>
+            <table style="width: 100%; text-align: center; border-collapse: separate; border-spacing: 0 1em;">
+                <tr>
+                    <td><div class="textField">Username</div></td>
+                    <td>:</td>
+                    <td> <input type="text" name="username" style="width: 97%;"></td>
+                </tr>
+                <tr>
+                    <td><div class="textField">Password</div></td>
+                    <td>:</td>
+                    <td><input type="password" name="password" style="width: 97%;"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" value="Login" style="width: 100%;"></td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
+{{end}}
