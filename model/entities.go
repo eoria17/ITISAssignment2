@@ -27,7 +27,7 @@ func (Order) TableName() string {
 
 type OrderLine struct {
 	ID       int `gorm:"primary_key"`
-	OrderID  string
+	OrderID  int
 	Order    *Order
 	MenuID   int
 	Menu     *Menu

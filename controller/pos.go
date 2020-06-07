@@ -23,6 +23,7 @@ func (pos PosEngine) Route(r *mux.Router) {
 
 	r.HandleFunc("/orders", pos.Orders)
 	r.HandleFunc("/order/{id:[0-9]+}", pos.OrderGet)
+	r.HandleFunc("/orders/create", pos.OrderCreate)
 }
 
 func (pos PosEngine) Login(w http.ResponseWriter, r *http.Request) {

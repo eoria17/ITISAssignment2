@@ -131,7 +131,6 @@ func (pos PosEngine) MenuGet(w http.ResponseWriter, r *http.Request) {
 			fmt.Println(err)
 		}
 
-		record.Name = r.FormValue("name")
 		record.Price = float64(price)
 		record.ImageURL = url
 
