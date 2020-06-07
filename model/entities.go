@@ -18,6 +18,7 @@ type Order struct {
 	OrderNumber string
 	Date        time.Time `gorm:"type:date"`
 	Total       float64
+	Lines       []OrderLine `gorm:"foreignkey:OrderID"`
 }
 
 func (Order) TableName() string {
@@ -25,12 +26,13 @@ func (Order) TableName() string {
 }
 
 type OrderLine struct {
-	ID              int `gorm:"primary_key"`
-	OrderLineNumber string
-	MenuID          int
-	Menu            *Menu
-	Amount          int
-	Subtotal        float64
+	ID       int `gorm:"primary_key"`
+	OrderID  string
+	Order    *Order
+	MenuID   int
+	Menu     *Menu
+	Amount   int
+	Subtotal float64
 }
 
 func (OrderLine) TableName() string {

@@ -1,0 +1,72 @@
+{{define "getOrder"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{.assets}}style.css">
+</head>
+
+<body>
+    <header class="header">
+        Order Number {{.Order.OrderNumber}} - {{.Order.Date.Format "02-01-2006"}}
+    </header>
+
+    <div class="sidebar">
+        <a href="/orders/create">Enter new Order</a>
+        <a class="active" href="/orders">Show all Orders</a>
+        <a href="/menu/create">Enter new Menu</a>
+        <a href="/menu">Show all Menus</a>
+    </div>
+
+    <!-- Page content -->
+    <div class="content">
+        <form action="/order/{{.Menu.ID}}" method="POST" enctype="multipart/form-data">
+            <div class="updateBox">
+                <table align="center"
+                    style="width: 100%; text-align: center; border-collapse: separate; border-spacing: 0 1em;">
+                    <tr>
+                        <td>
+                            Menu Name
+                        </td>
+                        <td>
+                            Amount
+                        </td>
+
+                        <td>
+                            Subtotal
+                        </td>
+                    </tr>
+                    {{range .Order.Lines}}
+                    <tr>
+                        <td>
+                            {{.Menu.Name}}
+                        </td>
+                        <td>
+                            {{.Amount}}
+                        </td>
+                        <td>
+                            {{.Subtotal}}
+                        </td>
+                    </tr>
+                    {{end}}
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <b>
+                                total
+                            </b>
+                        </td>
+                        <td>
+                            <b>{{.Order.Total}}</b>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+{{end}}

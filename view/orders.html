@@ -1,0 +1,60 @@
+{{define "orders"}}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{.assets}}style.css">
+</head>
+
+<body>
+    <header class="header">
+        All menus
+    </header>
+
+    <div class="sidebar">
+        <a href="/orders/create">Enter new Order</a>
+        <a class="active" href="/orders">Show all Orders</a>
+        <a href="/menu/create">Enter new Menu</a>
+        <a href="/menu">Show all Menus</a>
+    </div>
+
+    <div class="content">
+        <div class="listBox">
+            <form method="GET">
+                <table align="center"
+                    style="width: 100%; text-align: center; border-collapse: separate; border-spacing: 0 1em;">
+                    <tr>
+                        <td>
+                            Order Number
+                        </td>
+                        <td>
+                            Date
+                        </td>
+                        <td>
+                            Total
+                        </td>
+
+                    </tr>
+                    {{range .Orders}}
+                    <tr>
+                        <td>
+                            <a href="/order/{{.ID}}">{{.OrderNumber}}</a>
+                        </td>
+                        <td>
+                            {{.Date.Format "02-01-2006"}}
+                        </td>
+                        <td>
+                            {{.Total}}
+                        </td>
+
+                    </tr>
+                    {{end}}
+                </table>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+{{end}}
