@@ -1,2 +1,2 @@
-# ITISAssignment2
-Theo Riandy s3827202 ITIS Assignment POS Project
+# ITIS_A2
+This is a project which try to showcase how golang and WAS can interact with eac other
